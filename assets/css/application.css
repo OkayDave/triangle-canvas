@@ -1,0 +1,13 @@
+body {
+    background-color: #333;
+    color: #EEE;
+    padding-top: 1em;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
