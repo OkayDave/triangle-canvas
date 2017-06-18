@@ -13,6 +13,7 @@ $(function() {
         reader.readAsDataURL(file);
 
         $(this).remove();
+        $('#settings').show();
     });
 });
 
@@ -33,6 +34,12 @@ function loadImageToCanvas(e) {
 }
 
 function addShapes(reps) {
+    loadSettings();
+
+    if(!validSettings()) {
+        return;
+    }
+
     var refCanvas = $('#refCanvas')[0];
     var refContext = refCanvas.getContext('2d');
 
@@ -53,14 +60,20 @@ function addShapes(reps) {
         var key = Math.floor((y * refCanvas.width) + x) * 4;
 
         var colour = colourHexFromKey(img, key);
-        // if(Math.random() < 0.5) {
-        //     drawRectangleAtPoint(x, y, colour, drawContext);
-        // } else {
-            drawTriangleAtPoint(x, y, colour, drawContext);
-        // }
+        drawShapeAtPoint(x, y, colour, drawContext);
     }
 
     console.log("done")
+}
+
+function drawShapeAtPoint(x, y, colour, context) {
+    var shape = window.shapes[Math.floor(Math.random()*window.shapes.length)];
+
+    if(shape == 't') {
+        drawTriangleAtPoint(x, y, colour, context);
+    } else if(shape == 'r') {
+        drawRectangleAtPoint(x, y, colour, context);
+    }
 }
 
 function drawRectangleAtPoint(x, y, colour, context) {
@@ -87,7 +100,7 @@ function colourHexFromKey(img, key) {
     var r = img.data[key];
     var g = img.data[key+1];
     var b = img.data[key+2];
-    var a = Math.random() * 0.75;
+    var a = Math.random() * 0.25;
 
     var hex = "rgba("+ r + "," + g + "," + b + "," + a + ")";
     return hex;
@@ -101,4 +114,34 @@ function switchCanvas() {
 function blankCanvas(context, canvas) {
     context.fillStyle = "#FFFFFF";
     context.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function loadSettings() {
+    window.settings = {
+        'triangles': $('#settingTriangles').prop('checked') ? true : false,
+        'rectangles': $('#settingRectangles').prop('checked') ? true : false,
+    };
+
+    console.log('settings:', window.settings);
+
+    window.shapes = [];
+
+    if(window.settings['triangles']) {
+        window.shapes.push('t');
+    }
+
+    if(window.settings['rectangles']) {
+        window.shapes.push('r');
+    }
+
+    console.log('shapes:', window.shapes);
+}
+
+function validSettings() {
+    if(window.shapes.length==0) {
+        alert("You need to have shapes");
+        return false;
+    }
+
+    return true;
 }

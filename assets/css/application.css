@@ -11,3 +11,12 @@ canvas {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
+
+legend {
+    text-decoration: underline;
+}
+
+h6 {
+    font-weight: bold;
+    text-decoration: underline;
+}

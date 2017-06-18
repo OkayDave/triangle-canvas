@@ -18,17 +18,48 @@
             <canvas id="refCanvas"></canvas>
             <canvas id="drawCanvas" style="display: none;"></canvas>
             <hr />
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row>
+                <div class="col-md-12">
                     <input type="file" class="form-control-file" id="file-upload">
-                </div>
-                <div class="col-md-8">
-                    <div class="btn-group" id="controls">
-                        <button class="btn btn-primary" onClick="addShapes(10)" disabled>+10 steps</button>
-                        <button class="btn btn-info" onClick="addShapes(1250)" disabled>+1250 steps</button>
-                        <button class="btn btn-warning" onClick="addShapes(5000)" disabled>+5000 steps</button>
-                        <button class="btn btn-danger" onClick="addShapes(25000)" disabled>+25000 steps</button>
-                        <button class="btn" onclick="switchCanvas()" disabled>Toggle reference</button>
+
+                    <div id="settings" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="btn-group" id="controls">
+                                    <button class="btn btn-primary" onClick="addShapes(10)" disabled>+10 steps</button>
+                                    <button class="btn btn-info" onClick="addShapes(1250)" disabled>+1250 steps</button>
+                                    <button class="btn btn-warning" onClick="addShapes(5000)" disabled>+5000 steps</button>
+                                    <button class="btn btn-danger" onClick="addShapes(25000)" disabled>+25000 steps</button>
+                                    <button class="btn" onclick="switchCanvas()" disabled>Toggle reference</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr />
+                                <fieldset>
+                                    <legend>Advanced Settings</legend>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h6>Shapes</h6>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" id="settingTriangles" checked>
+                                                    Use triangles
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" id="settingRectangles">
+                                                    Use rectangles
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
