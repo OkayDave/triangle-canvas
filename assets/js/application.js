@@ -30,7 +30,6 @@ function loadImageToCanvas(e) {
     });
 
     img.src = e.target.result;
-    $('#controls .btn').attr("disabled", false);
 }
 
 function addShapes(reps) {
@@ -62,8 +61,6 @@ function addShapes(reps) {
         var colour = chooseColour(img, key);
         drawShapeAtPoint(x, y, colour, drawContext);
     }
-
-    console.log("done")
 }
 
 function drawShapeAtPoint(x, y, colour, context) {
@@ -135,8 +132,6 @@ function loadSettings() {
         'colourTransform': $('#settingColourTransform').val() || 'none'
     };
 
-    console.log('settings:', window.settings);
-
     window.shapes = [];
 
     if(window.settings['triangles']) {
@@ -146,8 +141,6 @@ function loadSettings() {
     if(window.settings['rectangles']) {
         window.shapes.push('r');
     }
-
-    console.log('shapes:', window.shapes);
 }
 
 function validSettings() {
