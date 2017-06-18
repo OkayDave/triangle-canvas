@@ -14,10 +14,10 @@
     <body>
         <div class="container">
             <h1>Triangle Canvas</h1>
-        </div>
-        <canvas id="refCanvas"></canvas>
-        <canvas id="drawCanvas" style="display: none;"></canvas>
-        <div class="container">
+            <hr />
+            <canvas id="refCanvas"></canvas>
+            <canvas id="drawCanvas" style="display: none;"></canvas>
+            <hr />
             <div class="row">
                 <div class="col-md-4">
                     <input type="file" class="form-control-file" id="file-upload">
@@ -25,9 +25,9 @@
                 <div class="col-md-8">
                     <div class="btn-group" id="controls">
                         <button class="btn btn-primary" onClick="addShapes(10)" disabled>+10 steps</button>
-                        <button class="btn btn-info" onClick="addShapes(250)" disabled>+250 steps</button>
-                        <button class="btn btn-warning" onClick="addShapes(500)" disabled>+500 steps</button>
-                        <button class="btn btn-danger" onClick="addShapes(1000)" disabled>+1000 steps</button>
+                        <button class="btn btn-info" onClick="addShapes(1250)" disabled>+1250 steps</button>
+                        <button class="btn btn-warning" onClick="addShapes(5000)" disabled>+5000 steps</button>
+                        <button class="btn btn-danger" onClick="addShapes(25000)" disabled>+25000 steps</button>
                         <button class="btn" onclick="switchCanvas()" disabled>Toggle reference</button>
                     </div>
                 </div>
