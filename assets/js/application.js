@@ -77,15 +77,15 @@ function drawShapeAtPoint(x, y, colour, context) {
 }
 
 function drawRectangleAtPoint(x, y, colour, context) {
-    var h = Math.floor(Math.random() * 6);
-    var w = Math.floor(Math.random() * 6);
+    var h = Math.floor(Math.random() * window.settings['maxHeight']);
+    var w = Math.floor(Math.random() * window.settings['maxWidth']);
     context.fillStyle = colour;
     context.fillRect(x-(w/2),y-(h/2),w,h);
 }
 
 function drawTriangleAtPoint(x, y, colour, context) {
-    var h = Math.floor(Math.random() * 6);
-    var w = Math.floor(Math.random() * 6);
+    var h = Math.floor(Math.random() * (window.settings['maxHeight']/2));
+    var w = Math.floor(Math.random() * (window.settings['maxWidth'])/2);
     var wobble = Math.round(Math.random() * 3);
     context.fillStyle = colour;
     context.beginPath();
@@ -120,6 +120,8 @@ function loadSettings() {
     window.settings = {
         'triangles': $('#settingTriangles').prop('checked') ? true : false,
         'rectangles': $('#settingRectangles').prop('checked') ? true : false,
+        'maxHeight': $('#settingHeight').val() || 6,
+        'maxWidth': $('#settingWidth').val() || 6
     };
 
     console.log('settings:', window.settings);
