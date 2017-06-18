@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <input type="file" class="form-control-file" id="file-upload">
 
-                    <div id="settings" style="display: none;">
+                    <div id="settings" style="/*display: none;*/">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group" id="controls">
@@ -41,7 +41,7 @@
                                 <fieldset>
                                     <legend>Advanced Settings</legend>
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <h6>Shapes</h6>
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -56,6 +56,24 @@
                                                 </label>
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <h6>Shape Dimensions</h6>
+                                            <div class="form-group row">
+                                                <label class="col-md-6 col-form-label">Max Width:</label>
+                                                <div class="col-md-6">
+                                                    <input class="form-control" type="number" id="settingWidth" value="6" required min="1" step="1" max="50">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-6 col-form-label">Max Height:</label>
+                                                <div class="col-md-6">
+                                                    <input class="form-control" type="number" id="settingHeight" value="6" required min="1" step="1" max="50">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
                                     </div>
                                 </fieldset>
                             </div>
