@@ -97,7 +97,7 @@ function chooseColour(img, key) {
     var r = img.data[key];
     var g = img.data[key+1];
     var b = img.data[key+2];
-    var a = Math.random() * 0.25;
+    var a = Math.random() * window.settings['maxOpacity'];
 
     if(window.settings['colourTransform']=='invert') {
         r = 255 - r;
@@ -129,7 +129,8 @@ function loadSettings() {
         'rectangles': $('#settingRectangles').prop('checked') ? true : false,
         'maxHeight': $('#settingHeight').val() || 6,
         'maxWidth': $('#settingWidth').val() || 6,
-        'colourTransform': $('#settingColourTransform').val() || 'none'
+        'colourTransform': $('#settingColourTransform').val() || 'none',
+        'maxOpacity': $('#settingMaxOpacity').val() || 0.5
     };
 
     window.shapes = [];
