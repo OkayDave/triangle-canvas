@@ -27,9 +27,9 @@
                             <div class="col-md-12">
                                 <div class="btn-group" id="controls">
                                     <button class="btn btn-primary" onClick="addShapes(10)" disabled>+10 steps</button>
-                                    <button class="btn btn-info" onClick="addShapes(1250)" disabled>+1250 steps</button>
-                                    <button class="btn btn-warning" onClick="addShapes(5000)" disabled>+5000 steps</button>
-                                    <button class="btn btn-danger" onClick="addShapes(25000)" disabled>+25000 steps</button>
+                                    <button class="btn btn-info" onClick="addShapes(1250)" disabled>+1,250 steps</button>
+                                    <button class="btn btn-warning" onClick="addShapes(40000)" disabled>+40,000 steps</button>
+                                    <button class="btn btn-danger" onClick="addShapes(250000)" disabled>+250,000 steps (give it a second)</button>
                                     <button class="btn" onclick="switchCanvas()" disabled>Toggle reference</button>
                                 </div>
                             </div>
@@ -41,7 +41,23 @@
                                 <fieldset>
                                     <legend>Advanced Settings</legend>
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
+                                            <h6>Shape Dimensions</h6>
+                                            <div class="form-group row">
+                                                <label class="col-md-5 col-form-label">Max Width:</label>
+                                                <div class="col-md-7">
+                                                    <input class="form-control" type="number" id="settingWidth" value="6" required min="1" step="1" max="50">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-5 col-form-label">Max Height:</label>
+                                                <div class="col-md-7">
+                                                    <input class="form-control" type="number" id="settingHeight" value="6" required min="1" step="1" max="50">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
                                             <h6>Shapes</h6>
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -56,24 +72,20 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <h6>Shape Dimensions</h6>
-                                            <div class="form-group row">
-                                                <label class="col-md-6 col-form-label">Max Width:</label>
-                                                <div class="col-md-6">
-                                                    <input class="form-control" type="number" id="settingWidth" value="6" required min="1" step="1" max="50">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-6 col-form-label">Max Height:</label>
-                                                <div class="col-md-6">
-                                                    <input class="form-control" type="number" id="settingHeight" value="6" required min="1" step="1" max="50">
-                                                </div>
-                                            </div>
 
+                                        <div class="col-md-4">
+                                            <h6>Colours</h6>
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-md-5">Transformation:</label>
+                                                <div class="col-md-7">
+                                                    <select class="form-control" id="settingColourTransform">
+                                                        <option value="none">Use original</option>
+                                                        <option value="invert">Invert colours</option>
+                                                        <option value="grey">Greyscale</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-
-
                                     </div>
                                 </fieldset>
                             </div>

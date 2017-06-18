@@ -59,7 +59,7 @@ function addShapes(reps) {
         var y = Math.floor(Math.random() * refCanvas.height);
         var key = Math.floor((y * refCanvas.width) + x) * 4;
 
-        var colour = colourHexFromKey(img, key);
+        var colour = chooseColour(img, key);
         drawShapeAtPoint(x, y, colour, drawContext);
     }
 
@@ -96,14 +96,24 @@ function drawTriangleAtPoint(x, y, colour, context) {
     context.fill();
 }
 
-function colourHexFromKey(img, key) {
+function chooseColour(img, key) {
     var r = img.data[key];
     var g = img.data[key+1];
     var b = img.data[key+2];
     var a = Math.random() * 0.25;
 
-    var hex = "rgba("+ r + "," + g + "," + b + "," + a + ")";
-    return hex;
+    if(window.settings['colourTransform']=='invert') {
+        r = 255 - r;
+        g = 255 - g;
+        b = 255 - b;
+    } else if(window.settings['colourTransform']=='grey'){
+        var grey = Math.round((r * 0.299) + (g * 0.587) + (b * 0.114));
+        r = grey;
+        g = grey;
+        b = grey;
+    }
+
+    return "rgba("+ r + "," + g + "," + b + "," + a + ")";
 }
 
 function switchCanvas() {
@@ -121,7 +131,8 @@ function loadSettings() {
         'triangles': $('#settingTriangles').prop('checked') ? true : false,
         'rectangles': $('#settingRectangles').prop('checked') ? true : false,
         'maxHeight': $('#settingHeight').val() || 6,
-        'maxWidth': $('#settingWidth').val() || 6
+        'maxWidth': $('#settingWidth').val() || 6,
+        'colourTransform': $('#settingColourTransform').val() || 'none'
     };
 
     console.log('settings:', window.settings);
