@@ -70,6 +70,8 @@ function drawShapeAtPoint(x, y, colour, context) {
         drawTriangleAtPoint(x, y, colour, context);
     } else if(shape == 'r') {
         drawRectangleAtPoint(x, y, colour, context);
+    } else if(shape == 'c') {
+        drawCircleAtPoint(x, y, colour, context);
     }
 }
 
@@ -90,6 +92,16 @@ function drawTriangleAtPoint(x, y, colour, context) {
     context.lineTo(x+w,y+wobble);
     context.lineTo(x, y);
     context.closePath();
+    context.fill();
+}
+
+function drawCircleAtPoint(x, y, colour, context) {
+    var h = Math.floor(Math.random() * (window.settings['maxHeight']));
+    var w = Math.floor(Math.random() * (window.settings['maxWidth']));
+
+    context.beginPath();
+    context.arc(x, y, (h+w)/2, 0, 2*Math.PI);
+    context.fillStyle = colour;
     context.fill();
 }
 
@@ -127,6 +139,7 @@ function loadSettings() {
     window.settings = {
         'triangles': $('#settingTriangles').prop('checked') ? true : false,
         'rectangles': $('#settingRectangles').prop('checked') ? true : false,
+        'circles': $('#settingCircles').prop('checked') ? true : false,
         'maxHeight': $('#settingHeight').val() || 6,
         'maxWidth': $('#settingWidth').val() || 6,
         'colourTransform': $('#settingColourTransform').val() || 'none',
@@ -141,6 +154,10 @@ function loadSettings() {
 
     if(window.settings['rectangles']) {
         window.shapes.push('r');
+    }
+
+    if(window.settings['circles']) {
+        window.shapes.push('c');
     }
 }
 
